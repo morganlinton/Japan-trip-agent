@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japan Trip Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🗾 Japan Trip Tracker</h1>
+            <div id="trip-progress"></div>
+        </header>
+
+        <main>
+            <!-- Daily Log Form -->
+            <section class="card">
+                <h2>📝 Today's Log</h2>
+                <form id="daily-log-form">
+                    <div class="form-group">
+                        <label for="location">Current Location:</label>
+                        <input type="text" id="location" name="location" placeholder="e.g., Shibuya, Tokyo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="activities">Activities Today:</label>
+                        <textarea id="activities" name="activities" placeholder="What did you do today?" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="liked">What We Liked:</label>
+                        <input type="text" id="liked" name="liked" placeholder="Comma-separated list (e.g., sushi restaurant, temple visit)">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="disliked">What We Didn't Like:</label>
+                        <input type="text" id="disliked" name="disliked" placeholder="Comma-separated list (e.g., too much walking, crowded)">
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="onsen-visit" name="onsenVisit">
+                            Did you visit an onsen today?
+                        </label>
+                    </div>
+
+                    <div class="form-group" id="onsen-details" style="display: none;">
+                        <label for="onsen-details-text">Onsen Details:</label>
+                        <input type="text" id="onsen-details-text" name="onsenDetails" placeholder="Which onsen? How was it?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="walking-notes">Dad's Knee/Walking Notes:</label>
+                        <textarea id="walking-notes" name="walkingNotes" placeholder="How did Dad's knee feel today? Any walking challenges?"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="overall-rating">Overall Day Rating:</label>
+                        <select id="overall-rating" name="overallRating">
+                            <option value="">Select rating...</option>
+                            <option value="5">😍 Amazing (5/5)</option>
+                            <option value="4">😊 Great (4/5)</option>
+                            <option value="3">😐 Good (3/5)</option>
+                            <option value="2">😕 Okay (2/5)</option>
+                            <option value="1">😞 Poor (1/5)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Save Today's Entry</button>
+                </form>
+            </section>
+
+            <!-- Suggestions -->
+            <section class="card">
+                <h2>💡 Suggestions for Tomorrow</h2>
+                <div id="suggestions-list">
+                    <p class="loading">Complete today's log to get personalized suggestions!</p>
+                </div>
+            </section>
+
+            <!-- Previous Entries -->
+            <section class="card">
+                <h2>📚 Trip History</h2>
+                <div id="entries-list"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
