@@ -4,7 +4,7 @@ const path = require('path');
 const cors = require('cors');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -157,8 +157,16 @@ app.get('/api/progress', (req, res) => {
     });
 });
 
-// Start server
-app.listen(PORT, async () => {
-    await loadTripData();
-    console.log(`Japan Trip Tracker running at http://localhost:${PORT}`);
-});
+// For Vercel, export the app instead of starting the server
+if (process.env.NODE_ENV !== 'production') {
+    // Start server in development
+    app.listen(PORT, async () => {
+        await loadTripData();
+        console.log(`Japan Trip Tracker running at http://localhost:${PORT}`);
+    });
+} else {
+    // Initialize data loading for production
+    loadTripData();
+}
+
+module.exports = app;

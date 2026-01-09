@@ -1,0 +1,5 @@
+.env
+.env.local
+trip-data.json
+node_modules
+*.log
